@@ -1,0 +1,10 @@
+scikit-optimize
+scikit-learn
+icecream
+pandas
+sympy
+pyDOE
+seaborn
+ipykernel
+joblib
+paretoset
