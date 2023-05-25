@@ -293,8 +293,11 @@ def get_best_configuration(instance_types, CPU_LIMITS, MEMORY_LIMITS, benchmark,
                 median = get_result_from_data(benchmark, data_name, config, MEMORY_LIMITS)
                 
                 cost = calculate_cost(cpu, mem, median, instance_type)
-                dataframe = dataframe.append({'time': median, 'cost': cost, 'memory': mem, 
-                                                'cpu': instance_type+ '_'+ cpu}, ignore_index=True)
+                # dataframe = dataframe.append({'time': median, 'cost': cost, 'memory': mem, 
+                #                                'cpu': instance_type+ '_'+ cpu}, ignore_index=True)
+
+                new_row = {'time': median, 'cost': cost, 'memory': mem, 'cpu': instance_type+ '_'+ cpu}
+                dataframe = pd.concat([dataframe, pd.DataFrame(new_row, index=[0])], ignore_index=True)
 
     # dataframe["cpu"] = pd.to_numeric(dataframe["cpu"])
     if metric=='runtime':
